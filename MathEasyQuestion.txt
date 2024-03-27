@@ -1,0 +1,41 @@
+Easy Math Questions
+
+Question 1: What is the result of 7 + 3?
+a) 8
+b) 9
+c) 10
+d) 11
+
+Answer 1: c
+
+Question 2: What is the value of 5 * 4?
+a) 16
+b) 20
+c) 25
+d) 30
+
+Answer 2: b
+
+Question 3: What is 12 divided by 4?
+a) 2
+b) 3
+c) 4
+d) 5
+
+Answer 3: b
+
+Question 4: What is the square root of 16?
+a) 2
+b) 4
+c) 8
+d) 16
+
+Answer 4: b
+
+Question 5: What is 9 squared?
+a) 18
+b) 27
+c) 81
+d) 90
+
+Answer 5: c

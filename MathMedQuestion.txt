@@ -1,0 +1,40 @@
+Medium Math Questions
+Question 1: What is 25% of 80?
+a) 15
+b) 20
+c) 25
+d) 30
+
+Answer 1: b
+
+Question 2: What is the result of (3 + 4) * (5 - 2)?
+a) 12
+b) 15
+c) 18
+d) 21
+
+Answer 2: d
+
+Question 3: What is the next number in the Fibonacci sequence after 5, 8, 13?
+a) 18
+b) 21
+c) 26
+d) 34
+
+Answer 3: d
+
+Question 4: What is the value of 2^4 + 3^2?
+a) 17
+b) 19
+c) 23
+d) 25
+
+Answer 4: a
+
+Question 5: If x = 3 and y = 5, what is the value of x^2 + y^2?
+a) 14
+b) 19
+c) 28
+d) 34
+
+Answer 5: c

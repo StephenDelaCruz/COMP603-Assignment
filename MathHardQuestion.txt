@@ -1,0 +1,40 @@
+Hard Math Questions
+Question 1: Solve for x: 2x + 5 = 15
+a) 5
+b) 7
+c) 8
+d) 10
+
+Answer 1: b
+
+Question 2: What is the result of √(3^2 + 4^2)?
+a) 5
+b) √5
+c) √25
+d) 7
+
+Answer 2: a
+
+Question 3: If f(x) = 2x^2 + 3x - 5, what is f(2)?
+a) 5
+b) 7
+c) 11
+d) 15
+
+Answer 3: c
+
+Question 4: What is the sum of the first 10 prime numbers?
+a) 129
+b) 165
+c) 195
+d) 220
+
+Answer 4: b
+
+Question 5: What is the result of 12! / (10! * 2!)?
+a) 11
+b) 55
+c) 66
+d) 78
+
+Answer 5: a
