@@ -1,0 +1,6 @@
+Laptop,999.99,0
+Smartphone,599.99,0
+Tablet,299.99,0
+Headphones,99.99,27
+Printer,199.99,9
+Camera,499.99,25
