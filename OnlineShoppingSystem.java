@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Task02_3;
+package assignment1;
 
 /**
  *
- * @author aweso
+ * @author mcste
  */
 import java.io.*;
 import java.util.*;
@@ -18,8 +17,8 @@ public class OnlineShoppingSystem {
     private Cart cart;
     private List<Order> orders;
     private List<User> users;
-    private boolean loggedIn; // Flag to track login status
-    private String currentUsername; // Store the username of the currently logged-in user
+    boolean loggedIn; // Flag to track login status
+    String currentUsername; // Store the username of the currently logged-in user
 
     public OnlineShoppingSystem() {
         inventory = new Inventory();
@@ -48,7 +47,7 @@ public class OnlineShoppingSystem {
 
     // Load users from user.txt file
     public void loadUsers() {
-        try ( Scanner scanner = new Scanner(new File("./resources/Users.txt"))) {
+        try ( Scanner scanner = new Scanner(new File("./rsc/Users.txt"))) {
             users = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String[] userInfo = scanner.nextLine().split(",");
@@ -69,7 +68,7 @@ public class OnlineShoppingSystem {
     public void createUser(String username, String password, String email) {
         User newUser = new User(username, password, email);
         users.add(newUser);
-        saveUsersToFile("./resources/Users.txt");
+        saveUsersToFile("./rsc/Users.txt");
     }
 
     private void saveUsersToFile(String filename) {
@@ -172,7 +171,7 @@ public class OnlineShoppingSystem {
         }
 
         // Save inventory changes to file
-        saveInventoryToFile("./resources/Products.txt");
+        saveInventoryToFile("./rsc/Products.txt");
 
         // Clear cart
         cart.getItems().clear();
@@ -185,7 +184,7 @@ public class OnlineShoppingSystem {
 
     private int getNextOrderNumber() {
         int nextOrderNumber = 0;
-        try ( Scanner scanner = new Scanner(new File("./resources/orders.txt"))) {
+        try ( Scanner scanner = new Scanner(new File("./rsc/orders.txt"))) {
             while (scanner.hasNextLine()) {
                 String[] orderInfo = scanner.nextLine().split(",");
                 if (orderInfo.length > 0 && orderInfo[0].matches("\\d+")) {
@@ -201,7 +200,7 @@ public class OnlineShoppingSystem {
     }
 
     private void saveOrderToFile(Order order) {
-        try ( PrintWriter writer = new PrintWriter(new FileWriter("./resources/orders.txt", true))) {
+        try ( PrintWriter writer = new PrintWriter(new FileWriter("./rsc/orders.txt", true))) {
             writer.println(order.toString());
             writer.println(); // Add an empty line between orders
         } catch (IOException e) {
@@ -219,119 +218,5 @@ public class OnlineShoppingSystem {
             }
         }
         return false;
-    }
-
-    // Main method to test the system
-    public static void main(String[] args) {
-        OnlineShoppingSystem system = new OnlineShoppingSystem();
-        system.loadProducts("./resources/Products.txt");
-        system.loadUsers();
-
-        try ( Scanner scanner = new Scanner(System.in)) {
-            boolean running = true; // Control flag for the loop
-            while (running) {
-                int choice = 0; // Default invalid choice
-                if (!system.loggedIn) {
-                    System.out.println("Welcome to Pear Store!");
-                    System.out.println("\n1. Browse Products");
-                    System.out.println("2. Log in");
-                    System.out.println("3. Create User");
-                    System.out.println("4. Exit\n");
-                    System.out.print("Enter your choice(1-4): ");
-
-                    // Handle non-numeric input
-                    if (scanner.hasNextInt()) {
-                        choice = scanner.nextInt();
-                    } else {
-                        scanner.next(); // Consume the invalid input
-                        System.out.println("Please enter a valid number.");
-                        continue; // Skip the rest of the loop iteration
-                    }
-
-                    switch (choice) {
-                        case 1:
-                            system.displayProducts();
-                            break;
-                        case 2:
-                            System.out.print("Enter username: ");
-                            String username = scanner.next();
-                            System.out.print("Enter password: ");
-                            String password = scanner.next();
-                            if (system.authenticateUser(username, password)) {
-                                System.out.println("\nLogin successful. Welcome to Pear Store, " + username + "!");
-                            } else {
-                                System.out.println("Invalid username or password. Please try again.");
-                            }
-                            break;
-                        case 3:
-                            System.out.print("Enter new username: ");
-                            String newUsername = scanner.next();
-                            System.out.print("Enter new password: ");
-                            String newPassword = scanner.next();
-                            System.out.print("Enter email: ");
-                            String email = scanner.next();
-                            system.createUser(newUsername, newPassword, email);
-                            break;
-                        case 4:
-                            System.out.println("Thank you for visiting. Goodbye!");
-                            running = false; // Set flag to false to exit loop
-                            break;
-                        default:
-                            System.out.println("Invalid choice. Please try again.");
-                    }
-                } else {
-                    // When user is logged in
-                    System.out.println("\n1. Browse Products");
-                    System.out.println("2. Add to Cart");
-                    System.out.println("3. View Cart");
-                    System.out.println("4. Place Order");
-                    System.out.println("5. Log out");
-                    System.out.println("6. Exit\n");
-                    System.out.print("Enter your choice(1-6): ");
-
-                    // Handle non-numeric input within logged-in section
-                    if (scanner.hasNextInt()) {
-                        choice = scanner.nextInt();
-                    } else {
-                        scanner.next(); // Consume the invalid input
-                        System.out.println("Please enter a valid number.");
-                        continue; // Skip the rest of the loop iteration
-                    }
-
-                    switch (choice) {
-                        case 1:
-                            system.displayProducts();
-                            break;
-                        case 2:
-                            System.out.print("Enter the product index to add to cart: ");
-                            if (scanner.hasNextInt()) {
-                                int index = scanner.nextInt() - 1;
-                                system.addToCart(index);
-                            } else {
-                                System.out.println("Please enter a valid product index.");
-                                scanner.next(); // Consume the non-integer input
-                            }
-                            break;
-                        case 3:
-                            system.displayCart();
-                            break;
-                        case 4:
-                            system.placeOrder(system.currentUsername);
-                            break;
-                        case 5:
-                            system.loggedIn = false;
-                            system.currentUsername = null;
-                            System.out.println("Logged out successfully.");
-                            break;
-                        case 6:
-                            System.out.println("Thank you for shopping with us!");
-                            running = false; // Set flag to false to exit loop
-                            break;
-                        default:
-                            System.out.println("Invalid choice. Please try again.");
-                    }
-                }
-            }
-        }
     }
 }
