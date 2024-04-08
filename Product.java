@@ -1,18 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Task02_3;
+package assignment1;
 
 /**
  *
- * @author aweso
+ * @author mcste
  */
 public class Product {
     private String name;
     private double price;
-        private int stock;
+    private int stock;
 
 
     public Product(String name, double price, int stock) {
@@ -39,5 +38,9 @@ public class Product {
     // Method to update stock level
     public void updateStock(int quantity) {
         stock -= quantity;
+    }
+    
+    public String toString(){
+        return "You have 2 years of warranty on this item.";
     }
 }

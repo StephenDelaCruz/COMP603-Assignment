@@ -1,22 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Task02_3;
+package assignment1;
 
 /**
  *
- * @author aweso
+ * @author mcste
  */
 import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {
     private List<Product> products;
+    private List<Phones> phones;
+    private List<Cameras> cameras;
 
     public Inventory() {
         products = new ArrayList<>();
+        phones = new ArrayList<>();
+        cameras = new ArrayList<>();
     }
 
     public void addProduct(Product product) {
@@ -29,6 +32,22 @@ public class Inventory {
 
     public List<Product> getProducts() {
         return products;
+    }
+    
+    public void addPhones(Phones phone){
+        phones.add(phone);
+    }
+    
+    public List<Phones> getPhones(){
+        return phones;
+    }
+    
+    public void addCameras(Cameras camera){
+        cameras.add(camera);
+    }
+    
+    public List<Cameras> getCameras(){
+        return cameras;
     }
 
     public Product findProductByName(String name) {

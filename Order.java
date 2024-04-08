@@ -1,17 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Task02_3;
+package assignment1;
 
 /**
  *
- * @author aweso
+ * @author mcste
  */
 import java.util.*;
 
 public class Order {
+
     private int orderId; // Unique order ID
     private List<Product> items; // List of products in the order
     private double totalPrice; // Total price of the order
@@ -57,13 +57,13 @@ public class Order {
         this.username = username;
     }
 
-   @Override
-public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append(orderId).append(",")
-      .append(username).append(",")
-      .append(items.toString()).append(",")
-      .append(totalPrice);
-    return sb.toString();
-}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(orderId).append(",")
+                .append(username).append(",")
+                .append(items.toString()).append(",")
+                .append(totalPrice);
+        return sb.toString();
+    }
 }

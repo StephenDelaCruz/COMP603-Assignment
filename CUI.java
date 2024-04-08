@@ -12,15 +12,17 @@ import java.util.Scanner;
  */
 public class CUI {
     public static void main(String[] args) {
-        OnlineShoppingSystem system = new OnlineShoppingSystem();
-        system.loadProducts("./rsc/Products.txt");
-        system.loadUsers();
+        OrderProcess op = new OrderProcess();
+        op.loadProducts("./rsc/Products.txt");
+        
+        UserManager um = new UserManager();
+        um.loadUsers();
 
-        try ( Scanner scanner = new Scanner(System.in)) {
+        try ( Scanner scan = new Scanner(System.in)) {
             boolean running = true; // Control flag for the loop
             while (running) {
                 int choice = 0; // Default invalid choice
-                if (!system.loggedIn) {
+                if (!um.loggedIn) {
                     System.out.println("Welcome to Pear Store!");
                     System.out.println("\n1. Browse Products");
                     System.out.println("2. Log in");
@@ -29,24 +31,24 @@ public class CUI {
                     System.out.print("Enter your choice(1-4): ");
 
                     // Handle non-numeric input
-                    if (scanner.hasNextInt()) {
-                        choice = scanner.nextInt();
+                    if (scan.hasNextInt()) {
+                        choice = scan.nextInt();
                     } else {
-                        scanner.next(); // Consume the invalid input
+                        scan.next(); // Consume the invalid input
                         System.out.println("Please enter a valid number.");
                         continue; // Skip the rest of the loop iteration
                     }
 
                     switch (choice) {
                         case 1:
-                            system.displayProducts();
+                            op.displayProducts();
                             break;
                         case 2:
                             System.out.print("Enter username: ");
-                            String username = scanner.next();
+                            String username = scan.next();
                             System.out.print("Enter password: ");
-                            String password = scanner.next();
-                            if (system.authenticateUser(username, password)) {
+                            String password = scan.next();
+                            if (um.authenticationOfUser(username, password)) {
                                 System.out.println("\nLogin successful. Welcome to Pear Store, " + username + "!");
                             } else {
                                 System.out.println("Invalid username or password. Please try again.");
@@ -54,12 +56,12 @@ public class CUI {
                             break;
                         case 3:
                             System.out.print("Enter new username: ");
-                            String newUsername = scanner.next();
+                            String newUsername = scan.next();
                             System.out.print("Enter new password: ");
-                            String newPassword = scanner.next();
+                            String newPassword = scan.next();
                             System.out.print("Enter email: ");
-                            String email = scanner.next();
-                            system.createUser(newUsername, newPassword, email);
+                            String email = scan.next();
+                            um.createUser(newUsername, newPassword, email);
                             break;
                         case 4:
                             System.out.println("Thank you for visiting. Goodbye!");
@@ -79,37 +81,37 @@ public class CUI {
                     System.out.print("Enter your choice(1-6): ");
 
                     // Handle non-numeric input within logged-in section
-                    if (scanner.hasNextInt()) {
-                        choice = scanner.nextInt();
+                    if (scan.hasNextInt()) {
+                        choice = scan.nextInt();
                     } else {
-                        scanner.next(); // Consume the invalid input
+                        scan.next(); // Consume the invalid input
                         System.out.println("Please enter a valid number.");
                         continue; // Skip the rest of the loop iteration
                     }
 
                     switch (choice) {
                         case 1:
-                            system.displayProducts();
+                            op.displayProducts();
                             break;
                         case 2:
                             System.out.print("Enter the product index to add to cart: ");
-                            if (scanner.hasNextInt()) {
-                                int index = scanner.nextInt() - 1;
-                                system.addToCart(index);
+                            if (scan.hasNextInt()) {
+                                int index = scan.nextInt() - 1;
+                                op.addToCart(index);
                             } else {
                                 System.out.println("Please enter a valid product index.");
-                                scanner.next(); // Consume the non-integer input
+                                scan.next(); // Consume the non-integer input
                             }
                             break;
                         case 3:
-                            system.displayCart();
+                            op.displayCart();
                             break;
                         case 4:
-                            system.placeOrder(system.currentUsername);
+                            op.placeOrder(um.currentUsername);
                             break;
                         case 5:
-                            system.loggedIn = false;
-                            system.currentUsername = null;
+                            um.loggedIn = false;
+                            um.currentUsername = null;
                             System.out.println("Logged out successfully.");
                             break;
                         case 6:
